@@ -55,6 +55,10 @@ function typeWriter(element, text, speed = 50) {
             if (i < text.length) {
                 element.innerHTML += text.charAt(i);
                 i++;
+                
+                // Rola o container para baixo automaticamente
+                element.scrollTop = element.scrollHeight;
+                
                 setTimeout(type, speed);
             } else {
                 // Remove o cursor piscante
