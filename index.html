@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Carol ❤️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Música de fundo -->
+    <audio id="background-music" loop>
+        <source src="music/love-page.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio HTML5.
+    </audio>
+
+    <!-- Seção do Coração Inicial -->
+    <div id="heart-section" class="section active">
+        <div class="heart-container">
+            <i class="fas fa-heart pulsing-heart"></i>
+        </div>
+    </div>
+
+    <!-- Seção da Mensagem -->
+    <div id="message-section" class="section">
+        <div class="message-container">
+            <div class="message-content">
+                <h1>Para Carol 💕</h1>
+                <div id="typewriter-text" class="typewriter"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção do Carrossel -->
+    <div id="carousel-section" class="section">
+        <div class="carousel-container">
+            <h2>Nossos Momentos Especiais</h2>
+            <div class="carousel-wrapper">
+                <div id="photo-carousel" class="photo-carousel">
+                    <div class="photo-slide">
+                        <img src="images/photo1.jpg" alt="Nosso primeiro encontro">
+                    </div>
+                    <div class="photo-slide">
+                        <img src="images/photo2.jpg" alt="Momentos especiais">
+                    </div>
+                    <div class="photo-slide">
+                        <img src="images/photo3.jpg" alt="Nosso amor">
+                    </div>
+                    <div class="photo-slide">
+                        <img src="images/photo4.jpg" alt="Juntos para sempre">
+                    </div>
+                    <div class="photo-slide">
+                        <img src="images/photo5.jpg" alt="Felicidade">
+                    </div>
+                </div>
+            </div>
+            <button id="speed-button" class="speed-button">Aperte aqui</button>
+        </div>
+    </div>
+
+    <!-- Seção Final com Vídeo -->
+    <div id="final-section" class="section">
+        <div class="final-container">
+            <div class="video-container">
+                <video controls poster="images/photo1.jpg">
+                    <source src="video/love-page.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeo HTML5.
+                </video>
+            </div>
+            <div class="final-message">
+                <p>Nosso amor é mais forte que um Stand, e nem o Dio conseguiria parar o tempo entre nós. ❤️✨</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container para explosão de corações -->
+    <div id="hearts-explosion" class="hearts-explosion"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
