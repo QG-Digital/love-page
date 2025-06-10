@@ -91,6 +91,12 @@ body {
     overflow: hidden;
     border-right: 2px solid #4A90E2;
     animation: blink-caret 1s step-end infinite;
+    /* Adicione estas propriedades: */
+    max-height: 60vh; /* Limita a altura máxima */
+    overflow-y: auto;  /* Adiciona scroll vertical se necessário */
+    padding-right: 15px; /* Espaço para o scroll */
+    width: 100%;       /* Garante que ocupa toda a largura disponível */
+    word-wrap: break-word; /* Quebra palavras longas */
 }
 
 @keyframes blink-caret {
