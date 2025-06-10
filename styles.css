@@ -80,7 +80,7 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
-    max-height: 80vh; /* Altura máxima */
+    max-height: 170vh; /* Altura máxima */
     overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse */
 }
 
