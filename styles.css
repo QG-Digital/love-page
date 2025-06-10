@@ -1,0 +1,307 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.8s ease-in-out;
+    z-index: 1;
+}
+
+.section.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+}
+
+/* Seção do Coração */
+#heart-section {
+    background: radial-gradient(circle, #E74C3C 0%, #8E44AD 50%, #000000 100%);
+}
+
+.heart-container {
+    text-align: center;
+}
+
+.pulsing-heart {
+    font-size: 8rem;
+    color: #ff6b6b;
+    animation: pulse 1s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(255, 107, 107, 0.8);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Seção da Mensagem */
+#message-section {
+    background: linear-gradient(135deg, #000000 0%, #4A90E2 25%, #8E44AD 75%, #E74C3C 100%);
+    padding: 2rem;
+}
+
+.message-container {
+    max-width: 800px;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.message-container h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: #ff6b6b;
+    text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+}
+
+.typewriter {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: left;
+    white-space: pre-wrap;
+    overflow: hidden;
+    border-right: 2px solid #4A90E2;
+    animation: blink-caret 1s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #4A90E2; }
+}
+
+/* Seção do Carrossel */
+#carousel-section {
+    background: linear-gradient(45deg, #000000 0%, #8E44AD 50%, #4A90E2 100%);
+    padding: 2rem;
+}
+
+.carousel-container {
+    text-align: center;
+    max-width: 900px;
+}
+
+.carousel-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #ff6b6b;
+    text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+}
+
+.carousel-wrapper {
+    perspective: 1000px;
+    margin-bottom: 3rem;
+}
+
+.photo-carousel {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+.photo-slide {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    left: 50px;
+    top: 50px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 3px solid #ff6b6b;
+}
+
+.photo-slide:nth-child(1) { transform: rotateY(0deg) translateZ(200px); }
+.photo-slide:nth-child(2) { transform: rotateY(72deg) translateZ(200px); }
+.photo-slide:nth-child(3) { transform: rotateY(144deg) translateZ(200px); }
+.photo-slide:nth-child(4) { transform: rotateY(216deg) translateZ(200px); }
+.photo-slide:nth-child(5) { transform: rotateY(288deg) translateZ(200px); }
+
+.photo-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.speed-button {
+    background: linear-gradient(45deg, #E74C3C, #ff6b6b);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.speed-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(231, 76, 60, 0.6);
+}
+
+/* Seção Final */
+#final-section {
+    background: linear-gradient(135deg, #000000 0%, #4A90E2 100%);
+    padding: 2rem;
+}
+
+.final-container {
+    text-align: center;
+    max-width: 800px;
+}
+
+.video-container {
+    margin-bottom: 2rem;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.video-container video {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
+
+.final-message {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.final-message p {
+    font-size: 1.5rem;
+    color: #ff6b6b;
+    text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+    line-height: 1.6;
+}
+
+/* Explosão de Corações */
+.hearts-explosion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.heart-particle {
+    position: absolute;
+    color: #ff6b6b;
+    font-size: 2rem;
+    opacity: 0;
+    animation: explode 3s ease-out forwards;
+}
+
+@keyframes explode {
+    0% {
+        opacity: 1;
+        transform: scale(0) rotate(0deg) translate(var(--randomX, 0), var(--randomY, 0));
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5) rotate(180deg) translate(var(--randomX, 0), var(--randomY, 0));
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(360deg) translate(var(--randomX, 0), var(--randomY, 0));
+    }
+}
+
+.fast-rotation {
+    animation: fastRotate 0.1s linear infinite !important;
+}
+
+@keyframes fastRotate {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .pulsing-heart {
+        font-size: 6rem;
+    }
+    
+    .message-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .message-container h1 {
+        font-size: 2rem;
+    }
+    
+    .typewriter {
+        font-size: 1rem;
+    }
+    
+    .carousel-container h2 {
+        font-size: 2rem;
+    }
+    
+    .photo-carousel {
+        width: 250px;
+        height: 350px;
+    }
+    
+    .photo-slide {
+        width: 150px;
+        height: 225px;
+        left: 50px;
+        top: 62px;
+    }
+    
+    .photo-slide:nth-child(1) { transform: rotateY(0deg) translateZ(150px); }
+    .photo-slide:nth-child(2) { transform: rotateY(72deg) translateZ(150px); }
+    .photo-slide:nth-child(3) { transform: rotateY(144deg) translateZ(150px); }
+    .photo-slide:nth-child(4) { transform: rotateY(216deg) translateZ(150px); }
+    .photo-slide:nth-child(5) { transform: rotateY(288deg) translateZ(150px); }
+    
+    .final-message p {
+        font-size: 1.2rem;
+    }
+}
