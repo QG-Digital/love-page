@@ -76,11 +76,18 @@ body {
     border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.message-container h1 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    color: #ff6b6b;
-    text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+.message-container {
+    max-width: 800px;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    /* Adicione: */
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
 }
 
 .typewriter {
@@ -91,12 +98,13 @@ body {
     overflow: hidden;
     border-right: 2px solid #4A90E2;
     animation: blink-caret 1s step-end infinite;
-    /* Adicione estas propriedades: */
-    max-height: 60vh; /* Limita a altura máxima */
-    overflow-y: auto;  /* Adiciona scroll vertical se necessário */
-    padding-right: 15px; /* Espaço para o scroll */
-    width: 100%;       /* Garante que ocupa toda a largura disponível */
-    word-wrap: break-word; /* Quebra palavras longas */
+    /* Modifique: */
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 15px;
+    width: 100%;
+    word-wrap: break-word;
+    scroll-behavior: smooth; /* Rolagem suave */
 }
 
 @keyframes blink-caret {
