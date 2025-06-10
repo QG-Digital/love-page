@@ -301,7 +301,7 @@ body {
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 868px) {
     .message-container {
         max-height: 70vh;
         padding: 1.5rem;
