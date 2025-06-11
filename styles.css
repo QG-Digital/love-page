@@ -428,3 +428,189 @@ body {
     }
 }
 
+/* ===== RESPONSIVIDADE ESPECÍFICA PARA CELULAR ===== */
+
+/* Dispositivos muito pequenos (até 360px) */
+@media screen and (max-width: 360px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .section {
+        padding: 0.5rem;
+    }
+    
+    .message-container {
+        height: min(95vh, 40rem);
+        padding: 0.8rem;
+    }
+    
+    .carousel-wrapper {
+        height: clamp(300px, 55vw, 350px);
+    }
+    
+    .photo-slide {
+        width: clamp(150px, 32vw, 200px);
+        height: clamp(220px, 45vw, 300px);
+    }
+    
+    .photo-slide:nth-child(n) { 
+        transform: translate(-50%, -50%) rotateY(calc(var(--i, 0) * 72deg)) translateZ(clamp(180px, 28vw, 250px)); 
+    }
+}
+
+/* Dispositivos pequenos (361px - 480px) - Moto G60 se encaixa aqui */
+@media screen and (min-width: 361px) and (max-width: 480px) {
+    html {
+        font-size: 15px;
+    }
+    
+    .section {
+        padding: 0.75rem;
+    }
+    
+    .message-container {
+        height: min(93vh, 45rem);
+        padding: 1rem;
+    }
+    
+    .carousel-wrapper {
+        height: clamp(320px, 58vw, 400px);
+    }
+    
+    .photo-slide {
+        width: clamp(160px, 33vw, 220px);
+        height: clamp(240px, 47vw, 330px);
+    }
+    
+    .photo-slide:nth-child(n) { 
+        transform: translate(-50%, -50%) rotateY(calc(var(--i, 0) * 72deg)) translateZ(clamp(190px, 29vw, 270px)); 
+    }
+    
+    .speed-button {
+        min-height: 3.5rem;
+        padding: clamp(0.8rem, 3.5vw, 1.2rem) clamp(1.8rem, 5vw, 2.5rem);
+    }
+}
+
+/* Dispositivos médios (481px - 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+    
+    .carousel-wrapper {
+        height: clamp(380px, 50vw, 450px);
+    }
+    
+    .photo-slide {
+        width: clamp(180px, 30vw, 240px);
+        height: clamp(270px, 43vw, 360px);
+    }
+    
+    .photo-slide:nth-child(n) { 
+        transform: translate(-50%, -50%) rotateY(calc(var(--i, 0) * 72deg)) translateZ(clamp(200px, 25vw, 280px)); 
+    }
+}
+
+/* Ajustes para telas muito altas (orientação portrait) */
+@media screen and (orientation: portrait) and (min-height: 700px) {
+    .message-container {
+        height: min(85vh, 50rem);
+    }
+    
+    .video-container {
+        max-width: clamp(300px, 70vw, 450px);
+    }
+}
+
+/* Ajustes para telas muito largas (orientação landscape) */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    .message-container {
+        height: min(90vh, 35rem);
+    }
+    
+    .carousel-wrapper {
+        height: clamp(200px, 40vh, 300px);
+    }
+    
+    .pulsing-heart {
+        font-size: clamp(4rem, 12vh, 8rem);
+    }
+    
+    .photo-slide {
+        width: clamp(120px, 25vw, 180px);
+        height: clamp(180px, 35vw, 270px);
+    }
+}
+
+/* Otimizações específicas para Android */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+    
+    .photo-slide {
+        will-change: transform;
+        transform: translateZ(0);
+    }
+    
+    .video-container video {
+        will-change: transform;
+        transform: translateZ(0);
+    }
+}
+
+/* Correções para problemas de viewport em alguns Androids */
+@supports (-webkit-touch-callout: none) {
+    .section {
+        height: 100vh;
+        height: -webkit-fill-available;
+    }
+}
+
+/* Melhorias de performance para animações em dispositivos móveis */
+.photo-carousel,
+.photo-slide,
+.pulsing-heart,
+.speed-button {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+/* Ajustes específicos para touch */
+@media (hover: none) and (pointer: coarse) {
+    .photo-slide:hover {
+        transform: translate(-50%, -50%) scale(1.05) translateZ(2rem);
+    }
+    
+    .speed-button:hover {
+        transform: translateY(-0.125rem);
+        box-shadow: 0 1rem 2.5rem rgba(231, 76, 60, 0.6);
+    }
+    
+    .video-container:hover {
+        transform: scale(1.01);
+    }
+}
+
+/* Ajuste para evitar zoom no input em iOS/Android */
+input, select, textarea {
+    font-size: 16px !important;
+}
+
+/* Melhoria na legibilidade do texto em telas pequenas */
+@media screen and (max-width: 480px) {
+    .typewriter {
+        font-size: clamp(1.1rem, 3.2vw, 1.3rem);
+        line-height: 1.7;
+    }
+    
+    .final-message p {
+        font-size: clamp(1.2rem, 3.8vw, 1.5rem);
+        line-height: 1.6;
+    }
+}
