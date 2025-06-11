@@ -1,0 +1,543 @@
+/* ===== RESET E CONFIGURAÇÕES BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100vh;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* ===== SEÇÕES GERAIS ===== */
+.section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    padding: 1.25rem;
+}
+
+.section.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+}
+
+/* ===== SEÇÃO DO CORAÇÃO ===== */
+#heart-section {
+    background: radial-gradient(circle at center, #E74C3C 0%, #8E44AD 50%, #000000 100%);
+}
+
+.heart-container {
+    text-align: center;
+    padding: 1.25rem;
+}
+
+.pulsing-heart {
+    font-size: clamp(4rem, 12vw, 8rem);
+    color: #ff6b6b;
+    animation: pulseHeart 1.2s ease-in-out infinite;
+    text-shadow: 0 0 2rem rgba(255, 107, 107, 0.9);
+    filter: drop-shadow(0 0 1rem rgba(255, 107, 107, 0.6));
+}
+
+@keyframes pulseHeart {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 0.9;
+    }
+}
+
+/* ===== SEÇÃO DA MENSAGEM ===== */
+#message-section {
+    background: linear-gradient(135deg, #000000 0%, #4A90E2 25%, #8E44AD 75%, #E74C3C 100%);
+    padding: 1rem;
+}
+
+.message-container {
+    max-width: min(90vw, 56rem);
+    width: 100%;
+    text-align: center;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 1.5rem;
+    backdrop-filter: blur(1rem);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    height: min(85vh, 50rem);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.7);
+}
+
+.message-container h1 {
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    margin-bottom: clamp(1rem, 3vw, 2rem);
+    color: #ff6b6b;
+    text-shadow: 0 0 1.5rem rgba(255, 107, 107, 0.7);
+    flex-shrink: 0;
+    font-weight: 700;
+    letter-spacing: 0.125rem;
+}
+
+.typewriter-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    margin: 0.625rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    min-height: 0;
+}
+
+.typewriter-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 107, 107, 0.6) transparent;
+}
+
+.typewriter-wrapper::-webkit-scrollbar {
+    width: 0.375rem;
+}
+
+.typewriter-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.typewriter-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 107, 0.6);
+    border-radius: 0.25rem;
+}
+
+.typewriter {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.8;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #ffffff;
+    padding-right: 1.25rem;
+    min-height: 100%;
+    display: block;
+    text-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.6);
+}
+
+.typewriter::after {
+    content: '|';
+    animation: blinkCaret 1s step-end infinite;
+    color: #4A90E2;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+@keyframes blinkCaret {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* ===== SEÇÃO DO CARROSSEL ===== */
+#carousel-section {
+    background: linear-gradient(135deg, #000000 0%, #8E44AD 50%, #4A90E2 100%);
+    padding: 1rem;
+}
+
+.carousel-container {
+    text-align: center;
+    max-width: 100%;
+    width: 100%;
+}
+
+.carousel-container h2 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+    color: #ff6b6b;
+    text-shadow: 0 0 1.25rem rgba(255, 107, 107, 0.7);
+    font-weight: 600;
+    letter-spacing: 0.0625rem;
+}
+
+.carousel-wrapper {
+    perspective: clamp(800px, 100vw, 1200px);
+    margin-bottom: 2rem;
+    position: relative;
+    height: clamp(280px, 50vw, 420px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.photo-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: rotate3D 20s linear infinite;
+}
+
+@keyframes rotate3D {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+@keyframes fastRotate {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+.photo-slide {
+    position: absolute;
+    width: clamp(140px, 25vw, 240px);
+    height: clamp(200px, 35vw, 340px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.6);
+    border: 3px solid #ff6b6b;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    backface-visibility: hidden;
+}
+
+.photo-slide:hover {
+    transform: translate(-50%, -50%) scale(1.08) translateZ(3rem);
+    box-shadow: 0 0.5rem 3rem rgba(255, 107, 107, 0.7);
+    z-index: 100;
+    border-color: #E74C3C;
+}
+
+/* Posicionamento 3D otimizado para melhor visualização */
+.photo-slide:nth-child(1) { 
+    transform: translate(-50%, -50%) rotateY(0deg) translateZ(clamp(150px, 20vw, 220px)); 
+}
+.photo-slide:nth-child(2) { 
+    transform: translate(-50%, -50%) rotateY(72deg) translateZ(clamp(150px, 20vw, 220px)); 
+}
+.photo-slide:nth-child(3) { 
+    transform: translate(-50%, -50%) rotateY(144deg) translateZ(clamp(150px, 20vw, 220px)); 
+}
+.photo-slide:nth-child(4) { 
+    transform: translate(-50%, -50%) rotateY(216deg) translateZ(clamp(150px, 20vw, 220px)); 
+}
+.photo-slide:nth-child(5) { 
+    transform: translate(-50%, -50%) rotateY(288deg) translateZ(clamp(150px, 20vw, 220px)); 
+}
+
+.photo-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.photo-slide:hover img {
+    transform: scale(1.05);
+}
+
+/* ===== BOTÃO ACELERAR O AMOR ===== */
+.speed-button {
+    background: linear-gradient(45deg, #E74C3C, #ff6b6b, #8E44AD);
+    color: white;
+    border: none;
+    padding: clamp(0.75rem, 3vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0.75rem 2rem rgba(231, 76, 60, 0.5);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.0625rem;
+    margin-top: clamp(1rem, 3vw, 2rem);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    min-height: 3rem;
+}
+
+.speed-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: 0.6s;
+    z-index: -1;
+}
+
+.speed-button:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0 1rem 2.5rem rgba(231, 76, 60, 0.8);
+    background: linear-gradient(45deg, #ff6b6b, #E74C3C, #8E44AD);
+}
+
+.speed-button:hover::before {
+    left: 100%;
+}
+
+.speed-button:active {
+    transform: translateY(-0.125rem);
+}
+
+.speed-button:disabled {
+    background: linear-gradient(45deg, #999, #777);
+    transform: none;
+    box-shadow: 0 0.375rem 1rem rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+}
+
+.speed-button.pulse {
+    animation: pulseButton 1s infinite;
+}
+
+@keyframes pulseButton {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* ===== SEÇÃO FINAL ===== */
+#final-section {
+    background: linear-gradient(135deg, #000000 0%, #4A90E2 100%);
+    padding: 1rem;
+}
+
+.final-container {
+    text-align: center;
+    max-width: min(90vw, 50rem);
+    width: 100%;
+    padding: 1.25rem;
+}
+
+.video-container {
+    width: 100%; /* Ocupa a largura máxima disponível */
+    max-width: clamp(300px, 60vw, 400px); /* Limita o tamanho máximo */
+    margin: 0 auto; /* Centraliza */
+    border-radius: 1.25rem;
+    overflow: hidden; /* Corta qualquer conteúdo que ultrapasse */
+    box-shadow: 0 1.25rem 4rem rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: #000; /* Fundo preto para evitar bordas brancas */
+}
+
+.video-container:hover {
+    transform: scale(1.02);
+}
+
+.video-container video {
+    width: 100%; /* Ocupa 100% do container */
+    height: auto; /* Mantém a proporção */
+    display: block; /* Remove espaços indesejados */
+    object-fit: cover; /* Preenche o container sem distorcer (corta bordas se necessário) */
+    aspect-ratio: 9/16; /* Proporção vertical (ajuste conforme seu vídeo) */
+}
+
+.final-message {
+    background: rgba(0, 0, 0, 0.75);
+    padding: clamp(1.25rem, 4vw, 2rem);
+    border-radius: 1.25rem;
+    backdrop-filter: blur(0.75rem);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    margin-top: 1.25rem;
+}
+
+.final-message p {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    color: #ff6b6b;
+    text-shadow: 0 0 1.25rem rgba(255, 107, 107, 0.6);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+/* ===== EXPLOSÃO DE CORAÇÕES ===== */
+.hearts-explosion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.heart-particle {
+    position: absolute;
+    color: #ff6b6b;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    opacity: 0;
+    animation: explodeHeart 3s ease-out forwards;
+    text-shadow: 0 0 0.75rem rgba(255, 107, 107, 0.9);
+}
+
+@keyframes explodeHeart {
+    0% {
+        opacity: 1;
+        transform: scale(0) rotate(0deg) translate(var(--randomX, 0), var(--randomY, 0));
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.3) rotate(180deg) translate(var(--randomX, 0), var(--randomY, 0));
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.3) rotate(360deg) translate(var(--randomX, 0), var(--randomY, 0));
+    }
+}
+
+/* ===== RESPONSIVIDADE PARA ANDROID ===== */
+
+/* Dispositivos pequenos (até 480px) */
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .section {
+        padding: 0.75rem;
+    }
+    
+    .message-container {
+        height: min(90vh, 40rem);
+        padding: 1rem;
+    }
+    
+    .carousel-wrapper {
+        height: clamp(240px, 45vw, 300px);
+    }
+    
+    .photo-slide {
+        width: clamp(110px, 22vw, 160px);
+        height: clamp(160px, 32vw, 240px);
+    }
+    
+    .photo-slide:nth-child(n) { 
+        transform: translate(-50%, -50%) rotateY(calc(var(--i, 0) * 72deg)) translateZ(clamp(200px, 30vw, 350px)); 
+    }
+}
+
+/* Dispositivos médios (481px - 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+    
+    .carousel-wrapper {
+        height: clamp(300px, 45vw, 380px);
+    }
+    
+    .photo-slide {
+        width: clamp(160px, 23vw, 200px);
+        height: clamp(240px, 33vw, 300px);
+    }
+    
+    .photo-slide:nth-child(n) { 
+        transform: translate(-50%, -50%) rotateY(calc(var(--i, 0) * 72deg)) translateZ(clamp(100px, 18vw, 160px)); 
+    }
+}
+
+/* Dispositivos grandes (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .carousel-wrapper {
+        height: clamp(360px, 40vw, 420px);
+    }
+    
+    .photo-slide {
+        width: clamp(180px, 22vw, 220px);
+        height: clamp(270px, 32vw, 330px);
+    }
+    
+    .photo-slide:nth-child(n) { 
+        transform: translate(-50%, -50%) rotateY(calc(var(--i, 0) * 72deg)) translateZ(clamp(140px, 18vw, 200px)); 
+    }
+}
+
+/* Ajustes para telas muito altas (orientação portrait) */
+@media screen and (orientation: portrait) and (min-height: 800px) {
+    .message-container {
+        height: min(80vh, 45rem);
+    }
+    
+    .video-container video {
+        max-width: min(350px, 70vw);
+    }
+}
+
+/* Ajustes para telas muito largas (orientação landscape) */
+@media screen and (orientation: landscape) and (max-height: 600px) {
+    .message-container {
+        height: min(85vh, 35rem);
+    }
+    
+    .carousel-wrapper {
+        height: clamp(200px, 35vh, 300px);
+    }
+    
+    .pulsing-heart {
+        font-size: clamp(3rem, 8vh, 6rem);
+    }
+}
+
+/* Otimizações para Android específicas */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .photo-slide {
+        will-change: transform;
+    }
+    
+    .video-container video {
+        will-change: transform;
+    }
+}
+
+/* Correções para problemas de viewport em alguns Androids */
+@supports (-webkit-touch-callout: none) {
+    .section {
+        height: 100vh;
+        height: -webkit-fill-available;
+    }
+}
+
+/* Melhorias de performance para animações */
+.photo-carousel,
+.photo-slide,
+.pulsing-heart,
+.speed-button {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
