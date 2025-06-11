@@ -14,6 +14,7 @@ body {
     line-height: 1.6;
 }
 
+/* ===== SEÇÕES GERAIS ===== */
 .section {
     position: fixed;
     top: 0;
@@ -36,7 +37,7 @@ body {
     z-index: 10;
 }
 
-/* Seção do Coração */
+/* ===== SEÇÃO DO CORAÇÃO ===== */
 #heart-section {
     background: radial-gradient(circle, #E74C3C 0%, #8E44AD 50%, #000000 100%);
 }
@@ -65,7 +66,7 @@ body {
     }
 }
 
-/* Seção da Mensagem - Área completamente redesenhada */
+/* ===== SEÇÃO DA MENSAGEM ===== */
 #message-section {
     background: linear-gradient(135deg, #000000 0%, #4A90E2 25%, #8E44AD 75%, #E74C3C 100%);
     padding: 15px;
@@ -75,61 +76,74 @@ body {
 }
 
 .message-container {
-    max-width: 800px;
+    max-width: 900px;
     width: 100%;
     text-align: center;
-    padding: 25px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 25px;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.15);
     display: flex;
     flex-direction: column;
-    height: auto;
-    max-height: 90vh;
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    height: 85vh;
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.6);
 }
 
 .message-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
     color: #ff6b6b;
-    text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+    text-shadow: 0 0 25px rgba(255, 107, 107, 0.6);
     flex-shrink: 0;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 .typewriter-container {
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: 50vh; /* Altura mínima garantida */
-    position: relative;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    padding: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    padding: 25px;
     margin: 10px 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
 }
 
 .typewriter-wrapper {
     flex: 1;
-    overflow: auto;
+    overflow-y: auto;
     position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 107, 107, 0.5) transparent;
+}
+
+.typewriter-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.typewriter-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.typewriter-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 107, 0.5);
+    border-radius: 3px;
 }
 
 .typewriter {
-    font-size: 1.2rem;
-    line-height: 1.8;
+    font-size: 1.3rem;
+    line-height: 1.9;
     text-align: left;
     white-space: pre-wrap;
     word-wrap: break-word;
     color: #ffffff;
-    padding-right: 15px;
+    padding-right: 20px;
     min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: block;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .typewriter::after {
@@ -137,6 +151,7 @@ body {
     animation: blink-caret 1s step-end infinite;
     color: #4A90E2;
     font-weight: bold;
+    font-size: 1.4rem;
 }
 
 @keyframes blink-caret {
@@ -144,7 +159,7 @@ body {
     50% { opacity: 1; }
 }
 
-/* Seção do Carrossel */
+/* ===== SEÇÃO DO CARROSSEL ===== */
 #carousel-section {
     background: linear-gradient(45deg, #000000 0%, #8E44AD 50%, #4A90E2 100%);
     padding: 20px;
@@ -262,7 +277,7 @@ body {
     left: 100%;
 }
 
-/* Seção Final */
+/* ===== SEÇÃO FINAL ===== */
 #final-section {
     background: linear-gradient(135deg, #000000 0%, #4A90E2 100%);
     padding: 20px;
@@ -312,7 +327,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* Explosão de Corações */
+/* ===== EXPLOSÃO DE CORAÇÕES ===== */
 .hearts-explosion {
     position: fixed;
     top: 0;
@@ -356,26 +371,26 @@ body {
     100% { transform: rotateY(360deg); }
 }
 
-/* Melhorias de Responsividade */
+/* ===== RESPONSIVIDADE ===== */
 @media (max-width: 768px) {
     .message-container {
         padding: 20px;
-        max-height: 85vh;
+        height: 80vh;
     }
     
     .message-container h1 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        letter-spacing: 1px;
     }
     
     .typewriter-container {
-        min-height: 40vh; /* Altura aumentada para mobile */
-        padding: 10px;
+        padding: 20px;
     }
     
     .typewriter {
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: 1.1rem;
+        line-height: 1.7;
     }
     
     .pulsing-heart {
@@ -420,15 +435,21 @@ body {
     
     .message-container {
         padding: 15px;
-        max-height: 90vh;
+        height: 85vh;
+    }
+    
+    .message-container h1 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
     }
     
     .typewriter-container {
-        min-height: 50vh; /* Altura ainda maior para telas pequenas */
+        padding: 15px;
     }
     
     .typewriter {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        line-height: 1.6;
     }
     
     .photo-carousel {
