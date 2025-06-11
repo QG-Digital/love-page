@@ -1,4 +1,4 @@
-// Texto completo da mensagem
+// ===== CONFIGURAÇÕES INICIAIS =====
 const fullMessage = `Hoje é Dia dos Namorados, mas a verdade é que desde o dia em que você entrou na minha vida, todos os dias se tornaram especiais. 💘
 
 Quase 6 anos juntos... Parece que foi ontem que tudo começou lá no Badoo (quem diria que um app ia me dar o melhor presente do mundo?). A nossa primeira conversa, as risadas, aquele friozinho na barriga de marcar o primeiro encontro... E aí veio o momento que mudou tudo: o dia em que te vi pela primeira vez no terminal central. Eu lembro do teu sorriso, do teu jeito, e como tudo pareceu se encaixar de um jeito leve e mágico.
@@ -16,38 +16,51 @@ Feliz Dia dos Namorados, meu amor 💕`;
 let currentSection = 0;
 const sections = ['heart-section', 'message-section', 'carousel-section', 'final-section'];
 
-// Função para inicializar a música
+// ===== FUNÇÕES DE CONTROLE DE MÚSICA =====
 function initializeMusic() {
     const music = document.getElementById('background-music');
-    music.volume = 0.5; // 50% do volume
+    if (!music) return;
     
-    // Tenta tocar automaticamente
+    music.volume = 0.5;
+    
     music.play().catch(error => {
         console.log('Autoplay bloqueado. A música será iniciada na primeira interação do usuário.');
         
-        // Adiciona listener para iniciar música na primeira interação
         document.addEventListener('click', function startMusic() {
-            music.play();
+            music.play().catch(console.log);
             document.removeEventListener('click', startMusic);
         }, { once: true });
     });
 }
 
-// Função para trocar seções
+function ensureMusicPlaying() {
+    const music = document.getElementById('background-music');
+    if (music && !document.hidden && music.paused) {
+        music.play().catch(console.log);
+    }
+}
+
+// ===== FUNÇÕES DE NAVEGAÇÃO =====
 function switchToSection(sectionIndex) {
-    // Remove active de todas as seções
     document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
     });
     
-    // Adiciona active na seção atual
-    document.getElementById(sections[sectionIndex]).classList.add('active');
-    currentSection = sectionIndex;
+    const targetSection = document.getElementById(sections[sectionIndex]);
+    if (targetSection) {
+        targetSection.classList.add('active');
+        currentSection = sectionIndex;
+    }
 }
 
-// Função de máquina de escrever
+// ===== FUNÇÃO DE MÁQUINA DE ESCREVER =====
 function typeWriter(element, text, speed = 50) {
     return new Promise((resolve) => {
+        if (!element) {
+            resolve();
+            return;
+        }
+        
         let i = 0;
         element.innerHTML = '';
         
@@ -56,12 +69,15 @@ function typeWriter(element, text, speed = 50) {
                 element.innerHTML += text.charAt(i);
                 i++;
                 
-                // Rola o container para baixo automaticamente
-                element.scrollTop = element.scrollHeight;
+                // Auto-scroll para acompanhar o texto
+                const wrapper = element.closest('.typewriter-wrapper');
+                if (wrapper) {
+                    wrapper.scrollTop = wrapper.scrollHeight;
+                }
                 
                 setTimeout(type, speed);
             } else {
-                // Remove o cursor piscante
+                // Remove o cursor piscante após terminar
                 element.style.borderRight = 'none';
                 resolve();
             }
@@ -71,9 +87,11 @@ function typeWriter(element, text, speed = 50) {
     });
 }
 
-// Função para criar explosão de corações
+// ===== FUNÇÃO DE EXPLOSÃO DE CORAÇÕES =====
 function createHeartsExplosion() {
     const explosionContainer = document.getElementById('hearts-explosion');
+    if (!explosionContainer) return;
+    
     const heartsCount = 30;
     
     for (let i = 0; i < heartsCount; i++) {
@@ -85,7 +103,7 @@ function createHeartsExplosion() {
         heart.style.left = Math.random() * 100 + '%';
         heart.style.top = Math.random() * 100 + '%';
         
-        // Direção aleatória
+        // Direção aleatória para a animação
         const randomX = (Math.random() - 0.5) * 1000;
         const randomY = (Math.random() - 0.5) * 1000;
         heart.style.setProperty('--randomX', randomX + 'px');
@@ -102,12 +120,9 @@ function createHeartsExplosion() {
     }
 }
 
-// Inicialização quando a página carrega
-document.addEventListener('DOMContentLoaded', function() {
-    // Inicializa a música
-    initializeMusic();
-    
-    // Começa com o coração pulsando
+// ===== SEQUÊNCIA PRINCIPAL DA PÁGINA =====
+async function startMainSequence() {
+    // Inicia com o coração pulsando
     switchToSection(0);
     
     // Após 3 segundos, vai para a mensagem
@@ -125,10 +140,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 3000);
         }, 1000);
     }, 3000);
-    
-    // Configura o botão do carrossel
+}
+
+// ===== CONFIGURAÇÃO DO CARROSSEL =====
+function setupCarousel() {
     const speedButton = document.getElementById('speed-button');
     const carousel = document.getElementById('photo-carousel');
+    
+    if (!speedButton || !carousel) return;
     
     speedButton.addEventListener('click', function() {
         // Desabilita o botão
@@ -148,21 +167,33 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1500);
         }, 5000);
     });
+}
+
+// ===== NAVEGAÇÃO POR TECLADO =====
+function setupKeyboardNavigation() {
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' && currentSection < sections.length - 1) {
+            switchToSection(currentSection + 1);
+        } else if (e.key === 'ArrowLeft' && currentSection > 0) {
+            switchToSection(currentSection - 1);
+        }
+    });
+}
+
+// ===== INICIALIZAÇÃO =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializa a música
+    initializeMusic();
+    
+    // Configura o carrossel
+    setupCarousel();
+    
+    // Configura navegação por teclado
+    setupKeyboardNavigation();
+    
+    // Inicia a sequência principal
+    startMainSequence();
 });
 
-// Adiciona navegação por teclado (opcional)
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowRight' && currentSection < sections.length - 1) {
-        switchToSection(currentSection + 1);
-    } else if (e.key === 'ArrowLeft' && currentSection > 0) {
-        switchToSection(currentSection - 1);
-    }
-});
-
-// Função para garantir que a música continue tocando
-document.addEventListener('visibilitychange', function() {
-    const music = document.getElementById('background-music');
-    if (!document.hidden && music.paused) {
-        music.play().catch(console.log);
-    }
-});
+// ===== CONTROLE DE VISIBILIDADE DA PÁGINA =====
+document.addEventListener('visibilitychange', ensureMusicPlaying);
