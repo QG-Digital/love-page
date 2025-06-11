@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Carol ❤️</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
     <!-- Música de fundo -->
     <audio id="background-music" loop>
-        <source src="music/love-page.mp3" type="audio/mpeg">
+        <source src="public/music/love-page.mp3" type="audio/mpeg">
         Seu navegador não suporta áudio HTML5.
     </audio>
 
@@ -24,9 +24,11 @@
     <!-- Seção da Mensagem -->
     <div id="message-section" class="section">
         <div class="message-container">
-            <div class="message-content">
-                <h1>Para Carol 💕</h1>
-                <div id="typewriter-text" class="typewriter"></div>
+            <h1>Para Carol 💕</h1>
+            <div class="typewriter-container">
+                <div class="typewriter-wrapper">
+                    <div id="typewriter-text" class="typewriter"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -38,19 +40,19 @@
             <div class="carousel-wrapper">
                 <div id="photo-carousel" class="photo-carousel">
                     <div class="photo-slide">
-                        <img src="images/photo1.jpg" alt="Nosso primeiro encontro">
+                        <img src="public/images/photo1.jpg" alt="Nosso primeiro encontro">
                     </div>
                     <div class="photo-slide">
-                        <img src="images/photo2.jpg" alt="Momentos especiais">
+                        <img src="public/images/photo2.jpg" alt="Momentos especiais">
                     </div>
                     <div class="photo-slide">
-                        <img src="images/photo3.jpg" alt="Nosso amor">
+                        <img src="public/images/photo3.jpg" alt="Nosso amor">
                     </div>
                     <div class="photo-slide">
-                        <img src="images/photo4.jpg" alt="Juntos para sempre">
+                        <img src="public/images/photo4.jpg" alt="Juntos para sempre">
                     </div>
                     <div class="photo-slide">
-                        <img src="images/photo5.jpg" alt="Felicidade">
+                        <img src="public/images/photo5.jpg" alt="Felicidade">
                     </div>
                 </div>
             </div>
@@ -62,8 +64,8 @@
     <div id="final-section" class="section">
         <div class="final-container">
             <div class="video-container">
-                <video controls poster="images/photo1.jpg">
-                    <source src="video/love-page.mp4" type="video/mp4">
+                <video controls poster="public/images/photo1.jpg">
+                    <source src="public/video/love-page.mp4" type="video/mp4">
                     Seu navegador não suporta vídeo HTML5.
                 </video>
             </div>
@@ -76,6 +78,6 @@
     <!-- Container para explosão de corações -->
     <div id="hearts-explosion" class="hearts-explosion"></div>
 
-    <script src="script.js"></script>
+    <script src="src/script.js"></script>
 </body>
 </html>
