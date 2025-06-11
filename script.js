@@ -7,7 +7,7 @@ Nosso primeiro rolê no BK pode até parecer simples pra quem vê de fora, mas p
 
 A gente cresceu, enfrentou muita coisa, riu, chorou, brigou, fez as pazes, e aqui estamos. Mais unidos do que nunca. Você é minha base, meu porto seguro, minha melhor amiga, minha parceira de vida. Com você, tudo faz mais sentido.
 
-Carol, te agradecer por estar ao meu lado é pouco. Eu quero continuar escrevendo nossa história por muitos e muitos anos. Quero novos encontros, novos rolês (com ou sem BK 😆), viagens, planos, conquistas… E mesmo nas fases difíceis, sei que com você ao meu lado, tudo fica mais leve.
+Quero, te agradecer por estar ao meu lado é pouco. Eu quero continuar escrevendo nossa história por muitos e muitos anos. Quero novos encontros, novos rolês (com ou sem BK 😆), viagens, planos, conquistas… E mesmo nas fases difíceis, sei que com você ao meu lado, tudo fica mais leve.
 
 Te amo muito. Obrigado por ser essa mulher incrível, carinhosa, e por transformar minha vida com a tua presença. Você é o meu presente todos os dias. 🌹
 
@@ -80,8 +80,8 @@ function typeWriter(element, text, speed = 1000) {
         element.innerHTML = '';
         
         // Velocidade ajustada para mobile
-        const adjustedSpeed = isMobileDevice() ? Math.max(speed * 0.7, 20) : speed;
-        
+        const adjustedSpeed = isMobileDevice() ? Math.max(speed * 0.4, 15) : speed;
+       
         function type() {
             if (i < text.length) {
                 element.innerHTML += text.charAt(i);
@@ -119,8 +119,8 @@ function createHeartsExplosion() {
         heart.innerHTML = '❤️';
         
         // Posição aleatória
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.top = Math.random() * 100 + '%';
+        heart.style.left = Math.random() * 150 + '%';
+        heart.style.top = Math.random() * 150 + '%';
         
         // Direção aleatória para a animação
         const randomX = (Math.random() - 0.5) * (isMobileDevice() ? 600 : 1000);
