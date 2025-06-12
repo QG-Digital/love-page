@@ -77,15 +77,7 @@ function initializeMusic() {
             const playPromise = music.play();
             
             if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    // Mostra um aviso se não conseguir tocar
-                    heartButton.textContent = "Clique novamente para ativar o som";
-                    heartButton.style.fontSize = '1rem';
-                    heartButton.onclick = function() {
-                        music.play();
-                        startMainSequence();
-                    };
-                }).then(() => {
+                playPromise.then(() => {
                     // Continua com a sequência se a música tocar
                     createIntenseHeartRain();
                     heartButton.style.transform = 'scale(1.3)';
@@ -99,6 +91,18 @@ function initializeMusic() {
                     
                     heartButton.style.pointerEvents = 'none';
                     heartButton.style.opacity = '0.7';
+                }).catch(error => {
+                    // Mostra um aviso se não conseguir tocar
+                    heartButton.textContent = "Clique novamente para ativar o som";
+                    heartButton.style.fontSize = '1rem';
+                    heartButton.onclick = function() {
+                        music.play().then(() => {
+                            createIntenseHeartRain();
+                            startMainSequence();
+                        });
+                    };
+                });
+            }
         });
     }
 }
